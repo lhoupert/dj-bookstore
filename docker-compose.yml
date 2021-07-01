@@ -6,10 +6,13 @@ services:
     command: python /code/manage.py runserver 0.0.0.0:8010
     volumes:
       - .:/code
+    environment: 
+      - "DJANGO_SECRET_KEY=${DJ_SECRET_KEY}"
     ports:
       - 8010:8010
     depends_on:
       - db
+
   db:
     image: postgres:11
     expose:
